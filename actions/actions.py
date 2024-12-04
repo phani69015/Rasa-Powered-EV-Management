@@ -1,30 +1,3 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import numpy as np
@@ -34,8 +7,8 @@ from rasa_sdk.events import SlotSet
 import pandas as pd
 import joblib
 import requests
-from textwrap import dedent
-
+from textwrap import dedent  
+from actions.env import API
 
 class ActionBatterySoc(Action):
     def name(self) -> str:
@@ -296,146 +269,6 @@ class ActionAuxiliaryPowerUsage(Action):
 
 
 
-# class PlanTrip:
-    
-#     def haversine(self, lat1, lon1, lat2, lon2):
-#         R = 6371.0
-#         dlat = np.radians(lat2 - lat1)
-#         dlon = np.radians(lon2 - lon1)
-#         a = np.sin(dlat / 2)**2 + np.cos(np.radians(lat1)) * np.cos(np.radians(lat2)) * np.sin(dlon / 2)**2
-#         c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
-#         distance = R * c
-#         return distance
-    
-#     def calculate_bearing(self, lat1, lon1, lat2, lon2):
-#         lat1 = np.radians(lat1)
-#         lon1 = np.radians(lon1)
-#         lat2 = np.radians(lat2)
-#         lon2 = np.radians(lon2)
-
-#         delta_lon = lon2 - lon1
-#         x = np.sin(delta_lon) * np.cos(lat2)
-#         y = np.cos(lat1) * np.sin(lat2) - (np.sin(lat1) * np.cos(lat2) * np.cos(delta_lon))
-
-#         initial_bearing = np.arctan2(x, y)
-#         compass_bearing = (np.degrees(initial_bearing) + 360) % 360
-
-#         return compass_bearing
-    
-#     def add_distances_energies(self, df, latu, longu, latd, longd, ev_efficiency_kwh_per_km):
-#         df['distance_from_user'] = df.apply(lambda row: self.haversine(latu, longu, row['lattitude'], row['longitude']), axis=1)
-#         df['distance_to_destination'] = df.apply(lambda row: self.haversine(row['lattitude'], row['longitude'], latd, longd), axis=1)
-#         df['energy_needed_user_to_station'] = df['distance_from_user'] * ev_efficiency_kwh_per_km
-        
-#         # Load pre-trained model
-#         loaded_model = joblib.load('C://4-1//Rasa//actions//model.joblib')
-#         df['total_energy_needed_kWh'] = loaded_model.predict(df[['distance_from_user', 'distance_to_destination', 'ac_slow_price', 'ac_fast_price', 'dc_slow_price', 'dc_fast_price']])
-#         return df 
-    
-#     def get_lat_long(self, api_key, address):
-#         headers = {
-#             "X-Authorization-Token": api_key
-#         }
-
-#         url = f"https://apihub.latlong.ai/v4/geocode.json?address={address}"
-#         response = requests.get(url, headers=headers)
-
-#         if response.status_code == 200:
-#             location_data = response.json()
-
-#             if 'data' in location_data:
-#                 data = location_data['data']
-#                 latitude = float(data['latitude'])
-#                 longitude = float(data['longitude'])
-#                 return latitude, longitude
-#             else:
-#                 print("Error: 'data' field missing in the response.")
-#                 return None
-#         else:
-#             print(f"Error: Unable to fetch data (status code: {response.status_code})")
-#             return None
-        
-#     def get_recommendations(self, dest, user_latitude, user_longitude, dest_latitude, dest_longitude, battery_status, df):
-#         df['ac_slow_cost'] = df['total_energy_needed_kWh'] * df['ac_slow_price']
-#         df['ac_fast_cost'] = df['total_energy_needed_kWh'] * df['ac_fast_price']
-#         df['dc_slow_cost'] = df['total_energy_needed_kWh'] * df['dc_slow_price']
-#         df['dc_fast_cost'] = df['total_energy_needed_kWh'] * df['dc_fast_price']
-#         reachable_stations = df.loc[df['energy_needed_user_to_station'] <= battery_status]
-#         bearing_to_dest = self.calculate_bearing(user_latitude, user_longitude, dest_latitude, dest_longitude)
-        
-#         reachable_stations['bearing_to_station'] = reachable_stations.apply(
-#             lambda row: self.calculate_bearing(user_latitude, user_longitude, row['lattitude'], row['longitude']), axis=1)
-
-#         direction_threshold = 30
-#         reachable_stations_in_direction = reachable_stations.loc[
-#             (reachable_stations['bearing_to_station'] >= bearing_to_dest - direction_threshold) &
-#             (reachable_stations['bearing_to_station'] <= bearing_to_dest + direction_threshold)
-#         ]
-        
-#         if not reachable_stations_in_direction.empty:
-#             best_ac_slow = reachable_stations_in_direction.loc[reachable_stations_in_direction['ac_slow_cost'].idxmin()]
-#             best_dc_fast = reachable_stations_in_direction.loc[reachable_stations_in_direction['dc_fast_cost'].idxmax()]
-#             best_ac_fast = reachable_stations_in_direction.loc[reachable_stations_in_direction['ac_fast_cost'].idxmax()]
-#             best_dc_slow = reachable_stations_in_direction.loc[reachable_stations_in_direction['dc_slow_cost'].idxmin()]
-#         else: 
-#             return "No reachable charging stations found in the direction of your trip."
-
-#         recommendation_paragraph = f"""Based on your battery status and route to {dest}, here are the best charging stations:
-#                 Economical AC Slow: {best_ac_slow['name']}, {best_ac_slow['city']} - ₹{best_ac_slow['ac_slow_cost']:.2f}
-#                 Faster AC Charge: {best_ac_fast['name']}, {best_ac_fast['city']} - ₹{best_ac_fast['ac_fast_cost']:.2f}
-#                 Economical DC Slow: {best_dc_slow['name']}, {best_dc_slow['city']} - ₹{best_dc_slow['dc_slow_cost']:.2f}
-#                 Faster DC Charge: {best_dc_fast['name']}, {best_dc_fast['city']} - ₹{best_dc_fast['dc_fast_cost']:.2f}
-#                 """
-        
-#         return recommendation_paragraph
-
-
-# # actions.py
-
-# master = pd.read_csv("C://4-1//Rasa//charging_stations_with_prices.csv")
-
-# class ActionPlanTrip(Action):
-
-#     def name(self):
-#         return "action_plan_trip"
-
-
-#     def run(self, dispatcher, tracker, domain):
-#         destination = tracker.get_slot("destination")
-#         if destination:
-#             destination=str(destination)
-#             # Instantiate the class
-#             trip_planner = PlanTrip()
-#             destination=str(destination)
-#             # Sample input data
-#             curr_location = 'Vijayawada'
-#             battery_status = 30 
-#             ev_efficiency_kwh_per_km = 0.15
-#             api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUb2tlbklEIjoiM2NjZjE0N2MtZGVhMy00ZjM3LTk2MDAtNTY0N2NhOTNmMGVkIiwiQ2xpZW50SUQiOiI5Y2RjYzg3Yy1kZjhiLTQ2NTYtYTMwYy03Y2UwMTYyYjA4ZWEiLCJCdW5pdElEIjoxMDczOCwiQXBwTmFtZSI6IlRpcnVtYWxhICh0aXJ1bWFsYXBoYW5lbmRyYUBnbWFpbC5jb20pIC0gU2lnbiBVcCIsIkFwcElEIjoxMTc4NCwiVGltZVN0YW1wIjoiMjAyNC0xMC0wMiAxMjoxNzowOSIsImV4cCI6MTczMDQ2MzQyOX0.tlb-ebXhPcTIaFlMzT3zATiOQJvkuOCSbnwkIMlTndo"  # Replace with your API key
-
-#             # Fetch user's and destination's latitude and longitude
-#             user_latitude, user_longitude = trip_planner.get_lat_long(api_key, curr_location)
-#             dest_latitude, dest_longitude = trip_planner.get_lat_long(api_key, destination)
-#             df=master.copy()
-#             df['lattitude'] = pd.to_numeric(df['lattitude'], errors='coerce')
-#             df['longitude'] = pd.to_numeric(df['longitude'], errors='coerce')
-#             df['lattitude'].fillna(df['lattitude'].median(), inplace=True)
-#             df['longitude'].fillna(df['longitude'].median(), inplace=True)
-#             # Add distances and energy requirements to the dataset
-#             data = trip_planner.add_distances_energies(df, user_latitude, user_longitude, dest_latitude, dest_longitude, ev_efficiency_kwh_per_km)
-#             recommendation_message = trip_planner.get_recommendations(destination, user_latitude, user_longitude, dest_latitude, dest_longitude, battery_status, data)
-#             print(recommendation_message)
-#         # Get recommendations
-#             if recommendation_message:
-#                 return [SlotSet("trip_cost", recommendation_message)]
-#             else:
-#                 dispatcher.utter_message(text=f"Sorry, I couldn't find the location '{destination}'. Please provide a valid destination.")
-#         else:
-#             dispatcher.utter_message(text="Please provide a destination.")
-        
-#         return []
-
-
 import pandas as pd
 from geopy.distance import geodesic
 import numpy as np
@@ -605,7 +438,8 @@ class ActionPlanTrip(Action):
             destination=str(destination)
             # Instantiate the class
             # Sample input data
-            api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJUb2tlbklEIjoiZmI4NWNhNzUtZGI4NS00NTVhLTg2MzctZTk0ZjA2ODhmYWViIiwiQ2xpZW50SUQiOiJkNGNjMjY2MC02YzUxLTQxZmEtYTdmNC01ZDI2MTQ2YmMzYWYiLCJCdW5pdElEIjoxMDc3MSwiQXBwTmFtZSI6IlBoYW5lbmRyYSgyMTAwMDY5MDE1ZWVlQGdtYWlsLmNvbSkgLSBTaWduIFVwIiwiQXBwSUQiOjEyMzQ1LCJUaW1lU3RhbXAiOiIyMDI0LTExLTA4IDAzOjU2OjEzIiwiZXhwIjoxNzMzNjMwMTczfQ.BekYxU1R9fllHGU_5XTNOEapgeAYHsXQX2oHyBc6oLw"
+            api=API()
+            api_key = api
             # Fetch user's and destination's latitude and longitude
             user_latitude, user_longitude =   16.5812639, 80.5263493
             
