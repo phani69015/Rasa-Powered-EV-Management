@@ -1,0 +1,189 @@
+version: "3.1"
+
+rules:
+- rule: say hello
+  steps:
+  - intent: greet
+  - action: utter_greet 
+- rule: affirm
+  steps:
+  - intent: affirm
+  - action: utter_happy
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Respond to battery state of charge inquiry
+  steps:
+    - intent: inquire_battery_soc
+    - action: action_battery_soc
+    - action: utter_battery_soc
+
+- rule: Respond to battery state of health inquiry
+  steps:
+    - intent: inquire_battery_soh
+    - action: action_battery_soh
+    - action: utter_battery_soh
+
+- rule: Respond to battery temperature inquiry
+  steps:
+    - intent: inquire_battery_temperature
+    - action: action_battery_temperature
+    - action: utter_battery_temperature
+
+- rule: Respond to charging status inquiry
+  steps:
+    - intent: inquire_charging_status
+    - action: action_charging_status
+    - action: utter_charging_status
+
+- rule: Respond to energy consumption inquiry
+  steps:
+    - intent: inquire_energy_consumption
+    - action: action_energy_consumption
+    - action: utter_energy_consumption
+
+- rule: Respond to estimated range inquiry
+  steps:
+    - intent: inquire_estimated_range
+    - action: action_estimated_range
+    - action: utter_estimated_range
+
+- rule: Respond to battery voltage inquiry
+  steps:
+    - intent: inquire_battery_voltage
+    - action: action_battery_voltage
+    - action: utter_battery_voltage
+
+- rule: Respond to battery current inquiry
+  steps:
+    - intent: inquire_battery_current
+    - action: action_battery_current
+    - action: utter_battery_current
+
+- rule: Respond to charging power inquiry
+  steps:
+    - intent: inquire_charging_power
+    - action: action_charging_power
+    - action: utter_charging_power
+
+- rule: Respond to battery capacity inquiry
+  steps:
+    - intent: inquire_battery_capacity
+    - action: action_battery_capacity
+    - action: utter_battery_capacity
+
+- rule: Respond to battery cycle count inquiry
+  steps:
+    - intent: inquire_battery_cycle_count
+    - action: action_battery_cycle_count
+    - action: utter_battery_cycle_count
+
+- rule: Respond to battery faults inquiry
+  steps:
+    - intent: inquire_battery_faults
+    - action: action_battery_faults
+    - action: utter_battery_faults
+
+- rule: Respond to regenerative braking inquiry
+  steps:
+    - intent: inquire_regenerative_braking
+    - action: action_regenerative_braking
+    - action: utter_regenerative_braking
+
+- rule: Respond to C-rate inquiry
+  steps:
+    - intent: inquire_c_rate
+    - action: action_c_rate
+    - action: utter_c_rate
+
+- rule: Respond to charging station info inquiry
+  steps:
+    - intent: inquire_charging_station_info
+    - action: action_charging_station_info
+    - action: utter_charging_station_info
+
+- rule: Respond to battery cooling status inquiry
+  steps:
+    - intent: inquire_battery_cooling_status
+    - action: action_battery_cooling_status
+    - action: utter_battery_cooling_status
+
+- rule: Respond to remaining charge time inquiry
+  steps:
+    - intent: inquire_remaining_charge_time
+    - action: action_remaining_charge_time
+    - action: utter_remaining_charge_time
+
+- rule: Respond to driving mode impact inquiry
+  steps:
+    - intent: inquire_driving_mode_impact
+    - action: action_driving_mode_impact
+    - action: utter_driving_mode_impact
+
+- rule: Respond to battery aging inquiry
+  steps:
+    - intent: inquire_battery_aging
+    - action: action_battery_aging
+    - action: utter_battery_aging
+
+- rule: Respond to charging history inquiry
+  steps:
+    - intent: inquire_charging_history
+    - action: action_charging_history
+    - action: utter_charging_history
+
+- rule: Respond to preconditioning status inquiry
+  steps:
+    - intent: inquire_preconditioning_status
+    - action: action_preconditioning_status
+    - action: utter_preconditioning_status
+
+- rule: Respond to battery imbalance inquiry
+  steps:
+    - intent: inquire_battery_imbalance
+    - action: action_battery_imbalance
+    - action: utter_battery_imbalance
+
+- rule: Respond to safety systems status inquiry
+  steps:
+    - intent: inquire_safety_systems_status
+    - action: action_safety_systems_status
+    - action: utter_safety_systems_status
+
+- rule: Respond to environmental conditions inquiry
+  steps:
+    - intent: inquire_environmental_conditions
+    - action: action_environmental_conditions
+    - action: utter_environmental_conditions
+
+- rule: Respond to auxiliary power usage inquiry
+  steps:
+    - intent: inquire_auxiliary_power_usage
+    - action: action_auxiliary_power_usage
+    - action: utter_auxiliary_power_usage
+
+# Rule to activate the destination form
+- rule: Activate destination form
+  steps:
+    - intent: plan_trip  # When the user wants to plan a trip
+    - action: destination_form  # Activate the form
+    - active_loop: destination_form  # Form remains active until all required slots are filled
+
+# Rule to submit the destination form
+- rule: Submit destination form
+  condition:
+    - active_loop: destination_form  # Only if the form is active
+  steps:
+    - action: destination_form  # The form is filled
+    - active_loop: null  # Deactivate the form once it's filled
+    - action: action_plan_trip  # Trigger your custom action to plan the trip
+    - action: utter_return_trip_cost  # Respond with the trip cost after planning the trip
+ 

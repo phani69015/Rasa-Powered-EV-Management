@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat AI Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #432087;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #chat-container {
+            width: 100vw;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            cursor: text;
+            text-align: center;
+        }
+
+        #output {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center messages horizontally */
+    height: 150%;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+        .message {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #007bff; /* User message background color */
+            color: #ffffff;
+            align-self: flex-end; /* Align user messages to the right */
+        }
+
+        .bot-message {
+            background-color: #6c757d; /* Bot message background color */
+            color: #ffffff;
+            align-self: center; /* Align bot messages to the left */
+        }
+
+        #input-line {
+            display: flex;
+            font-weight: bold;
+            margin-top: auto; /* Move the input line to the bottom */
+        }
+
+        #user-input {
+            outline: none;
+            display: inline;
+            text-align: center;
+            font-size: 3em; /* Relative font size */
+        }
+
+        #cursor {
+            display: inline;
+            border-right: 4px solid #fff;
+            animation: blink 1s infinite;
+            width: 2px;
+            height: 50px;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .rasa-image {
+            height: 400px;
+            width: 800px;
+            background-size: cover;
+            margin-bottom: 20px; /* Add margin below the image */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="chat-container" onclick="focusInput()">
+        <div class="d-flex justify-content-center mb-5">
+            <img src="images/rasa.jpeg" class="rasa-image">
+        </div>
+        <div id="output"></div>
+        <div id="input-line" class="d-flex justify-content-center">
+            <span id="user-input"></span>
+            <span id="cursor"></span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

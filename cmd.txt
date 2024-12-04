@@ -1,0 +1,5 @@
+rasa run --enable-api --cors "*"
+rasa train
+rasa shell
+rasa run actions
+rasa interactive

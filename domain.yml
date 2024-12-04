@@ -1,0 +1,381 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - inquire_battery_soc
+  - inquire_battery_soh
+  - inquire_battery_temperature
+  - inquire_charging_status
+  - inquire_energy_consumption
+  - inquire_estimated_range
+  - inquire_battery_voltage
+  - inquire_battery_current
+  - inquire_charging_power
+  - inquire_battery_capacity
+  - inquire_battery_cycle_count
+  - inquire_battery_faults
+  - inquire_regenerative_braking
+  - inquire_c_rate
+  - inquire_charging_station_info
+  - inquire_battery_cooling_status
+  - inquire_remaining_charge_time
+  - inquire_driving_mode_impact
+  - inquire_battery_aging
+  - inquire_charging_history
+  - inquire_preconditioning_status
+  - inquire_battery_imbalance
+  - inquire_safety_systems_status
+  - inquire_environmental_conditions
+  - inquire_auxiliary_power_usage
+  - plan_trip
+  - inform
+
+entities:
+  - battery_soc
+  - battery_soh
+  - battery_temperature
+  - charging_status
+  - energy_consumption
+  - estimated_range
+  - battery_voltage
+  - battery_current
+  - charging_power
+  - battery_capacity
+  - battery_cycle_count
+  - battery_faults
+  - regenerative_braking
+  - c_rate
+  - charging_station_info
+  - battery_cooling_status
+  - remaining_charge_time
+  - driving_mode_impact
+  - battery_aging
+  - charging_history
+  - preconditioning_status
+  - battery_imbalance
+  - safety_systems_status
+  - environmental_conditions
+  - auxiliary_power_usage
+  - destination
+  - trip_cost
+
+
+
+
+
+
+
+actions:
+  - action_battery_soc
+  - action_battery_soh
+  - action_battery_temperature
+  - action_charging_status
+  - action_energy_consumption
+  - action_estimated_range
+  - action_battery_voltage
+  - action_battery_current
+  - action_charging_power
+  - action_battery_capacity
+  - action_battery_cycle_count
+  - action_battery_faults
+  - action_regenerative_braking
+  - action_c_rate
+  - action_charging_station_info
+  - action_battery_cooling_status
+  - action_remaining_charge_time
+  - action_driving_mode_impact
+  - action_battery_aging
+  - action_charging_history
+  - action_preconditioning_status
+  - action_battery_imbalance
+  - action_safety_systems_status
+  - action_environmental_conditions
+  - action_auxiliary_power_usage
+  - action_plan_trip
+
+
+
+slots:
+
+  battery_soc:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_soc
+
+  battery_soh:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_soh
+
+  battery_temperature:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_temperature
+
+  charging_status:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: charging_status
+
+  energy_consumption:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: energy_consumption
+
+  estimated_range:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: estimated_range
+
+  battery_voltage:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_voltage
+
+  battery_current:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_current
+
+  charging_power:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: charging_power
+
+  battery_capacity:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_capacity
+
+  battery_cycle_count:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_cycle_count
+
+  battery_faults:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_faults
+
+  regenerative_braking:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: regenerative_braking
+
+  c_rate:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: c_rate
+
+  charging_station_info:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: charging_station_info
+
+  battery_cooling_status:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_cooling_status
+
+  remaining_charge_time:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: remaining_charge_time
+
+  driving_mode_impact:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: driving_mode_impact
+
+  battery_aging:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_aging
+
+  charging_history:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: charging_history
+
+  preconditioning_status:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: preconditioning_status
+
+  battery_imbalance:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: battery_imbalance
+
+  safety_systems_status:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: safety_systems_status
+
+  environmental_conditions:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: environmental_conditions
+
+  auxiliary_power_usage:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: auxiliary_power_usage
+
+  destination:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: destination
+
+  trip_cost:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: trip_cost
+
+
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+
+  # EV
+  utter_battery_soc:
+    - text: "The current state of charge is {battery_soc}%."
+  utter_battery_soh:
+    - text: "The battery state of health is {battery_soh}%."
+  utter_battery_temperature:
+    - text: "The battery temperature is {battery_temperature}°C."
+  utter_charging_status:
+    - text: "The current charging status is {charging_status}."
+  utter_energy_consumption:
+    - text: "The current energy consumption is {energy_consumption} Wh/km."
+  utter_estimated_range:
+    - text: "The estimated range is {estimated_range} km."
+  utter_battery_voltage:
+    - text: "The current battery voltage is {battery_voltage} V."
+  utter_battery_current:
+    - text: "The current battery current is {battery_current} A."
+  utter_charging_power:
+    - text: "The charging power is {charging_power} kW."
+  utter_battery_capacity:
+    - text: "The total usable energy capacity of the battery is {battery_capacity} kWh."
+  utter_battery_cycle_count:
+    - text: "The battery has undergone {battery_cycle_count} charge-discharge cycles."
+  utter_battery_faults:
+    - text: "Current battery faults or warnings: {battery_faults}."
+  utter_regenerative_braking:
+    - text: "The regenerative braking has recovered {regenerative_braking} kWh of energy."
+  utter_c_rate:
+    - text: "The charge/discharge rate (C-rate) is {c_rate}."
+  utter_charging_station_info:
+    - text: "The connected charging station details: {charging_station_info}."
+  utter_battery_cooling_status:
+    - text: "The battery cooling system status is {battery_cooling_status}."
+  utter_remaining_charge_time:
+    - text: "The estimated time remaining to fully charge the battery is {remaining_charge_time} ."
+  utter_driving_mode_impact:
+    - text: "The battery consumption will be {driving_mode_impact}."
+  utter_battery_aging:
+    - text: "The battery aging indicator is {battery_aging}."
+  utter_charging_history:
+    - text: "Charging history: {charging_history}."
+  utter_preconditioning_status:
+    - text: "The battery preconditioning status is {preconditioning_status}."
+  utter_battery_imbalance:
+    - text: "The battery pack imbalance status: {battery_imbalance}."
+  utter_safety_systems_status:
+    - text: "The safety systems status: {safety_systems_status}."
+  utter_environmental_conditions:
+    - text: "The current environmental conditions affecting battery performance: {environmental_conditions}."
+  utter_auxiliary_power_usage:
+    - text: "The auxiliary power usage is {auxiliary_power_usage}."
+  utter_ask_destination:
+    - text: "Where would you like to travel?"
+  utter_return_trip_cost:
+    - text: "{trip_cost}"
+
+forms:
+  destination_form:
+    required_slots:
+      - destination
+
+session_config:
+  session_expiration_time: 120
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,622 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+
+# Ev start
+- intent: inquire_battery_soc
+  examples: |
+    - What is the state of charge?
+    - How much battery is left?
+    - Tell me the battery SoC.
+    - What is the current state of charge?
+
+- intent: inquire_battery_soh
+  examples: |
+    - What is the state of health of the battery?
+    - How good is the battery health?
+    - Can you tell me the battery state of health?
+    
+- intent: inquire_battery_temperature
+  examples: |
+    - What is the current battery temperature?
+    - Tell me the temperature of the battery.
+    - What is the battery temperature?
+    
+- intent: inquire_charging_status
+  examples: |
+    - What is the current charging status?
+    - How fast is the battery charging?
+    - What is the current charging status?
+
+- intent: inquire_estimated_range
+  examples: |
+    - What is the estimated range of the car?
+    - How far can the car go on the remaining charge?
+    - How much energy is being consumed currently?
+    
+- intent: inquire_energy_consumption
+  examples: |
+    - What is the current energy consumption?
+    - How efficient is the battery usage?
+    - What is the estimated range of the vehicle?
+    
+
+- intent: inquire_battery_voltage
+  examples: |
+    - What is the battery voltage?
+    - Tell me the current voltage of the battery.
+    - What is the current battery voltage?
+
+- intent: inquire_battery_current
+  examples: |
+    - What is the battery current?
+    - Tell me the current battery output.
+    - Can you tell me the battery current?
+
+- intent: inquire_charging_power
+  examples: |
+    - How much power is the battery receiving?
+    - What is the charging power in kW?
+    - What is the charging power being used?
+    
+- intent: inquire_battery_capacity
+  examples: |
+    - What is the total energy stored in the battery?
+    - How much energy can the battery store?
+    - What is the battery's total usable capacity?
+    
+- intent: inquire_battery_cycle_count
+  examples: |
+    - How many cycles has the battery undergone?
+    - Tell me the battery cycle count.
+    - How many charge-discharge cycles has the battery undergone?
+
+- intent: inquire_battery_faults
+  examples: |
+    - Are there any battery faults or warnings?
+    - Tell me about any battery issues.
+    - Are there any current battery faults?
+
+- intent: inquire_regenerative_braking
+  examples: |
+    - How much energy is being recovered during braking?
+    - What is the current regenerative braking status?
+    - How much energy has been recovered from regenerative braking?
+- intent: inquire_c_rate
+  examples: |
+    - What is the current charge/discharge rate?
+    - Tell me the C-rate of the battery.
+    - What is the charge/discharge rate (C-rate)?
+
+- intent: inquire_charging_station_info
+  examples: |
+    - What charging station is the car connected to?
+    - Tell me about the current charging station.
+    - What are the details of the connected charging station?
+
+- intent: inquire_battery_cooling_status
+  examples: |
+    - What is the status of the battery cooling system?
+    - How is the battery cooling system functioning?
+    - What is the status of the battery cooling system?
+
+- intent: inquire_remaining_charge_time
+  examples: |
+    - How much time is left to fully charge the battery?
+    - What is the remaining charge time?
+    - How much longer until the battery is fully charged?
+
+- intent: inquire_driving_mode_impact
+  examples: |
+    - How does driving mode impact the battery?
+    - Tell me how driving mode affects battery usage.
+    - What impact does the current driving mode have on battery consumption?
+
+- intent: inquire_battery_aging
+  examples: |
+    - What is the battery aging status?
+    - How is the battery performing over time?
+    - What is the battery aging indicator?
+
+- intent: inquire_charging_history
+  examples: |
+    - What is the charging history of the car?
+    - Tell me about past charging sessions.
+    - Can you show me the charging history?
+
+- intent: inquire_preconditioning_status
+  examples: |
+    - Is the battery being preconditioned before charging?
+    - Tell me about the preconditioning status.
+    - What is the status of battery preconditioning?
+
+- intent: inquire_battery_imbalance
+  examples: |
+    - Is there any battery pack imbalance?
+    - What is the battery pack imbalance status?
+    - Is there any imbalance in the battery pack?
+
+- intent: inquire_safety_systems_status
+  examples: |
+    - How is the safety system working?
+    - What is the status of the battery's safety systems?
+    - What is the status of the safety systems?
+
+- intent: inquire_environmental_conditions
+  examples: |
+    - What are the current environmental conditions?
+    - How is the external temperature affecting the battery?
+    - What are the current environmental conditions affecting battery performance?
+- intent: inquire_auxiliary_power_usage
+  examples: |
+    - How much power is used by auxiliary systems?
+    - What is the auxiliary power consumption?
+    - What is the auxiliary power usage?
+
+
+
+- intent: plan_trip
+  examples: |
+    - Plan a trip for me
+    - I want to plan a trip
+    - Can you plan my trip?
+
+
+- intent: inform
+  examples: |
+    - I want to go to [Los Angeles](destination)
+    - The destination is [San Francisco](destination)
+    - Travel to [New York](destination)
+    - [Los Angeles](destination)
+    - [Los Angeles](destination)
+    - [Gurugram](destination)
+    - [Behror](destination)
+    - [Khatauli](destination)
+    - [Una](destination)
+    - [Kasauli](destination)
+    - [Karnal](destination)
+    - [karnal](destination)
+    - [Darbaripur](destination)
+    - [Pune](destination)
+    - [New Delhi](destination)
+    - [Mettupalayam](destination)
+    - [Khopoli](destination)
+    - [Dehradun](destination)
+    - [Ahmedabad](destination)
+    - [Lonavla](destination)
+    - [Kukas](destination)
+    - [Pushkar](destination)
+    - [Gurgaon](destination)
+    - [Meerut](destination)
+    - [Mira Bhayandar](destination)
+    - [Secunderabad](destination)
+    - [Mumbai](destination)
+    - [Dindori](destination)
+    - [Sangli](destination)
+    - [Marunji](destination)
+    - [Saharanpur](destination)
+    - [Shela](destination)
+    - [Gajraula](destination)
+    - [Beawar Khas](destination)
+    - [Bengaluru](destination)
+    - [Metikuppe](destination)
+    - [Haridwar](destination)
+    - [Mahad](destination)
+    - [Thane](destination)
+    - [Natt](destination)
+    - [Vadodara](destination)
+    - [Coimbatore](destination)
+    - [Bhimtal](destination)
+    - [Nagaon](destination)
+    - [Pimpri-Chinchwad](destination)
+    - [Vasai-Virar](destination)
+    - [Greater Noida](destination)
+    - [Jaipur](destination)
+    - [Nashik](destination)
+    - [Shirdi](destination)
+    - [Dhule](destination)
+    - [Dahanu](destination)
+    - [Talegaon Dabhade](destination)
+    - [Katra](destination)
+    - [HYDERBAD](destination)
+    - [Sirsa](destination)
+    - [Noida](destination)
+    - [Shahpura](destination)
+    - [Shabhad](destination)
+    - [Bhadalwadi](destination)
+    - [Alwar](destination)
+    - [Kosi Kalan](destination)
+    - [Kotwan](destination)
+    - [Shivamogga](destination)
+    - [Karadagodu](destination)
+    - [Karkala](destination)
+    - [Surathkal](destination)
+    - [Kaup](destination)
+    - [Bramavara](destination)
+    - [Kundapura](destination)
+    - [Manipal](destination)
+    - [Chikkamagaluru](destination)
+    - [Mudbidri](destination)
+    - [bengaluru](destination)
+    - [pune](destination)
+    - [chennai](destination)
+    - [hyderabad](destination)
+    - [delhi](destination)
+    - [ahmedabad](destination)
+    - [kochi](destination)
+    - [mumbai](destination)
+    - [calicut](destination)
+    - [coimbatore](destination)
+    - [kolkata](destination)
+    - [gurugram](destination)
+    - [noida](destination)
+    - [indore](destination)
+    - [raipur](destination)
+    - [tiruchirappalli](destination)
+    - [nashik](destination)
+    - [jaipur](destination)
+    - [ghaziabad](destination)
+    - [hubli](destination)
+    - [surat](destination)
+    - [visakhapatnam](destination)
+    - [trivandrum](destination)
+    - [malappuram](destination)
+    - [goa](destination)
+    - [mysore](destination)
+    - [vijayawada](destination)
+    - [siliguri](destination)
+    - [lucknow](destination)
+    - [nagpur](destination)
+    - [guwahati](destination)
+    - [faridabad](destination)
+    - [belgaum](destination)
+    - [tirupati](destination)
+    - [aurangabad](destination)
+    - [tirur](destination)
+    - [kolhapur](destination)
+    - [kannur](destination)
+    - [dehradun](destination)
+    - [mangalore](destination)
+    - [trichur](destination)
+    - [palakkad](destination)
+    - [kollam](destination)
+    - [Delhi](destination)
+    - [Ganaur](destination)
+    - [Gaya](destination)
+    - [Cuttack](destination)
+    - [Bhopal](destination)
+    - [Nagpur](destination)
+    - [Davangere](destination)
+    - [Krishnagiri](destination)
+    - [Salem](destination)
+    - [Satara](destination)
+    - [Chennai](destination)
+    - [Ahmednagar](destination)
+    - [Agra](destination)
+    - [Chandigarh](destination)
+    - [Kasargod](destination)
+    - [Tumakuru](destination)
+    - [Chengampalli](destination)
+    - [Madgulapally](destination)
+    - [Karimnagar](destination)
+    - [Muzaffarnagar](destination)
+    - [Ranchi](destination)
+    - [Kurnool](destination)
+    - [Guwahati](destination)
+    - [Bhimavaram](destination)
+    - [Amravati, MH](destination)
+    - [Butibori](destination)
+    - [Jamshedpur](destination)
+    - [Buldhana](destination)
+    - [Gorakhpur](destination)
+    - [Lucknow](destination)
+    - [Ayodhya](destination)
+    - [Mahabaleshwar](destination)
+    - [Sirohi](destination)
+    - [Bhubaneswar](destination)
+    - [Kevadia](destination)
+    - [Aurangabad](destination)
+    - [Kisangarh](destination)
+    - [Indore](destination)
+    - [Bardhaman](destination)
+    - [Dhanbad](destination)
+    - [Howrah](destination)
+    - [Coochbehar](destination)
+    - [Gangtok](destination)
+    - [Siliguri](destination)
+    - [Kolkata](destination)
+    - [Hyderabad](destination)
+    - [Bokaro](destination)
+    - [Patna](destination)
+    - [Changodar](destination)
+    - [Kamod](destination)
+    - [Navi Mumbai](destination)
+    - [Mahabalipuram](destination)
+    - [Anantapuram](destination)
+    - [Berhampur](destination)
+    - [Khalumbre](destination)
+    - [Ongole](destination)
+    - [Raipur](destination)
+    - [Bhilai](destination)
+    - [Khursipar](destination)
+    - [Bhagalpur](destination)
+    - [Vijayawada](destination)
+    - [Ghaziabad](destination)
+    - [Vizag](destination)
+    - [Panchgani](destination)
+    - [Balasore](destination)
+    - [Jagdalpur](destination)
+    - [Jorhat](destination)
+    - [Sayri](destination)
+    - [Rajkot](destination)
+    - [Bayamari](destination)
+    - [Rupnarayanpur](destination)
+    - [Hisar](destination)
+    - [Moradabad](destination)
+    - [Belgaum](destination)
+    - [Hubli](destination)
+    - [Uruli Kanchan](destination)
+    - [Chittorgarh](destination)
+    - [Dindigul](destination)
+    - [Madurai](destination)
+    - [Bangalore](destination)
+    - [Tirupati](destination)
+    - [Chittoor](destination)
+    - [Gadanki](destination)
+    - [Digha](destination)
+    - [Naamavaram](destination)
+    - [Jeypore](destination)
+    - [Rajahmundry](destination)
+    - [Keonjhar](destination)
+    - [Angul](destination)
+    - [Dausa](destination)
+    - [Ajmer](destination)
+    - [Beesalpur](destination)
+    - [Shahjahanpur](destination)
+    - [Munnar](destination)
+    - [Hiriyur](destination)
+    - [Anantapur](destination)
+    - [Darjeeling](destination)
+    - [Bilaspur](destination)
+    - [Jajpur](destination)
+    - [Aluva](destination)
+    - [Kochi](destination)
+    - [Chikmagalur](destination)
+    - [Proddatur](destination)
+    - [Latur](destination)
+    - [Bharuch](destination)
+    - [Junagadh](destination)
+    - [Bhuj](destination)
+    - [Kuttikkanam](destination)
+    - [Adilabad](destination)
+    - [Bellary](destination)
+    - [Ujjain](destination)
+    - [Ernakulam](destination)
+    - [Panchkula](destination)
+    - [Kollam](destination)
+    - [Mumbai ](destination)
+    - [Nemom](destination)
+    - [Thiruvananthapuram](destination)
+    - [Thrissur](destination)
+    - [lonavala](destination)
+    - [navi mumbai](destination)
+    - [Villupuram](destination)
+    - [Malappuram](destination)
+    - [Tiruvannamalai](destination)
+    - [NEW DELHI](destination)
+    - [FARIDABAD](destination)
+    - [KOSI KALAN](destination)
+    - [Sajgaon](destination)
+    - [Amboli](destination)
+    - [MUMBAI](destination)
+    - [NAVSARI](destination)
+    - [KARJAN](destination)
+    - [BANGALORE](destination)
+    - [Goa](destination)
+    - [Perunnermangalam](destination)
+    - [Thiruvanthapuram](destination)
+    - [THIRUVANANTHAPURAM](destination)
+    - [AHMEDABAD](destination)
+    - [ELECTRONIC CITY](destination)
+    - [GURUGRAM](destination)
+    - [HYDERABAD](destination)
+    - [MOHALI ](destination)
+    - [Kolhapur](destination)
+    - [Patparkang](destination)
+    - [Ambur](destination)
+    - [Namakkal](destination)
+    - [Vellore](destination)
+    - [Palakkad](destination)
+    - [Erode](destination)
+    - [Visakhapatnam](destination)
+    - [UJJAIN](destination)
+    - [ATTUR](destination)
+    - [AVINASHI](destination)
+    - [Changanassery](destination)
+    - [COIMBATORE](destination)
+    - [Kozhikode](destination)
+    - [KRISHNAGIRI](destination)
+    - [MYSURU](destination)
+    - [SANKAGIRI](destination)
+    - [Perambalur](destination)
+    - [Ulundurpet](destination)
+    - [Kochi ](destination)
+    - [Kodaikanal](destination)
+    - [Banglore](destination)
+    - [Angamali](destination)
+    - [Shoolagiri](destination)
+    - [Guruvayur](destination)
+    - [THINDIVANAM](destination)
+    - [Walayar](destination)
+    - [Rasipuram](destination)
+    - [Palani](destination)
+    - [Omalur](destination)
+    - [Thirumangalam](destination)
+    - [Vadippatti](destination)
+    - [Yediyur](destination)
+    - [CHENNAI](destination)
+    - [CHENGALPATTU](destination)
+    - [VILLUPURAM](destination)
+    - [KALLAKURICHI](destination)
+    - [TRICHY](destination)
+    - [MADURAI](destination)
+    - [Tirupathi](destination)
+    - [Komirepalle](destination)
+    - [Peddapuram](destination)
+    - [Gujarat](destination)
+    - [Surat](destination)
+    - [Barog](destination)
+    - [Jammu](destination)
+    - [Hassan](destination)
+    - [Mudagere](destination)
+    - [Mysuru](destination)
+    - [Mangalore](destination)
+    - [Hatna](destination)
+    - [Basavakalyan](destination)
+    - [Kizhakkummuri](destination)
+    - [Kannur](destination)
+    - [Trivandrum](destination)
+    - [Kottayam](destination)
+    - [Faridabad](destination)
+    - [Chakan](destination)
+    - [Panchgaon](destination)
+    - [Suryapet](destination)
+    - [Yelur](destination)
+    - [Karad](destination)
+    - [Mainpuri](destination)
+    - [Amravati](destination)
+    - [Palyampudur](destination)
+    - [Mohali](destination)
+    - [Baramati](destination)
+    - [Maharashtra](destination)
+    - [Sambalpur](destination)
+    - [Kalinganagar](destination)
+    - [Puducherry](destination)
+    - [Ludhiana](destination)
+    - [Amritsar](destination)
+    - [Udaipur](destination)
+    - [Bhilwara](destination)
+    - [Jodhpur](destination)
+    - [Salasar](destination)
+    - [Sikar](destination)
+    - [Bhuvanagiri](destination)
+    - [Ooty](destination)
+    - [Kanpur](destination)
+    - [Bareilly](destination)
+    - [Ramnagar](destination)
+    - [Bayarmari](destination)
+    - [Palem](destination)
+    - [Kodikonda](destination)
+    - [Ananthapur](destination)
+    - [Lonavala](destination)
+    - [Belgavi](destination)
+    - [Pondicherry](destination)
+    - [Chidambaram](destination)
+    - [Pallikonda](destination)
+    - [Tumkur](destination)
+    - [Alappuzha](destination)
+    - [Adoor](destination)
+    - [Vandalur, Chennai](destination)
+    - [Karur](destination)
+    - [Vapi](destination)
+    - [Kasara](destination)
+    - [Aligarh](destination)
+    - [Durgapur](destination)
+    - [Rudrapur](destination)
+    - [Nainital](destination)
+    - [Agartala](destination)
+    - [Hosur](destination)
+    - [Port Blair](destination)
+    - [Purnea](destination)
+    - [Panvel](destination)
+    - [Chouk](destination)
+    - [Pathanamthitta](destination)

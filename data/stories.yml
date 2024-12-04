@@ -1,0 +1,191 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+
+- story: inquire_battery_soc
+  steps:
+    - intent: inquire_battery_soc
+    - action: action_battery_soc
+    - action: utter_battery_soc
+
+- story: inquire_battery_soh
+  steps:
+    - intent: inquire_battery_soh
+    - action: action_battery_soh
+    - action: utter_battery_soh
+
+- story: inquire_battery_temperature
+  steps:
+    - intent: inquire_battery_temperature
+    - action: action_battery_temperature
+    - action: utter_battery_temperature
+
+- story: inquire_charging_status
+  steps:
+    - intent: inquire_charging_status
+    - action: action_charging_status
+    - action: utter_charging_status
+
+- story: inquire_energy_consumption
+  steps:
+    - intent: inquire_energy_consumption
+    - action: action_energy_consumption
+    - action: utter_energy_consumption
+
+- story: inquire_estimated_range
+  steps:
+    - intent: inquire_estimated_range
+    - action: action_estimated_range
+    - action: utter_estimated_range
+
+- story: inquire_battery_voltage
+  steps:
+    - intent: inquire_battery_voltage
+    - action: action_battery_voltage
+    - action: utter_battery_voltage
+
+- story: inquire_battery_current
+  steps:
+    - intent: inquire_battery_current
+    - action: action_battery_current
+    - action: utter_battery_current
+
+- story: inquire_charging_power
+  steps:
+    - intent: inquire_charging_power
+    - action: action_charging_power
+    - action: utter_charging_power
+
+- story: inquire_battery_capacity
+  steps:
+    - intent: inquire_battery_capacity
+    - action: action_battery_capacity
+    - action: utter_battery_capacity
+
+- story: inquire_battery_cycle_count
+  steps:
+    - intent: inquire_battery_cycle_count
+    - action: action_battery_cycle_count
+    - action: utter_battery_cycle_count
+
+- story: inquire_battery_faults
+  steps:
+    - intent: inquire_battery_faults
+    - action: action_battery_faults
+    - action: utter_battery_faults
+
+- story: inquire_regenerative_braking
+  steps:
+    - intent: inquire_regenerative_braking
+    - action: action_regenerative_braking
+    - action: utter_regenerative_braking
+
+- story: inquire_c_rate
+  steps:
+    - intent: inquire_c_rate
+    - action: action_c_rate
+    - action: utter_c_rate
+
+- story: inquire_charging_station_info
+  steps:
+    - intent: inquire_charging_station_info
+    - action: action_charging_station_info
+    - action: utter_charging_station_info
+
+- story: inquire_battery_cooling_status
+  steps:
+    - intent: inquire_battery_cooling_status
+    - action: action_battery_cooling_status
+    - action: utter_battery_cooling_status
+
+- story: inquire_remaining_charge_time
+  steps:
+    - intent: inquire_remaining_charge_time
+    - action: action_remaining_charge_time
+    - action: utter_remaining_charge_time
+
+- story: inquire_driving_mode_impact
+  steps:
+    - intent: inquire_driving_mode_impact
+    - action: action_driving_mode_impact
+    - action: utter_driving_mode_impact
+
+- story: inquire_battery_aging
+  steps:
+    - intent: inquire_battery_aging
+    - action: action_battery_aging
+    - action: utter_battery_aging
+
+- story: inquire_charging_history
+  steps:
+    - intent: inquire_charging_history
+    - action: action_charging_history
+    - action: utter_charging_history
+
+- story: inquire_preconditioning_status
+  steps:
+    - intent: inquire_preconditioning_status
+    - action: action_preconditioning_status
+    - action: utter_preconditioning_status
+
+- story: inquire_battery_imbalance
+  steps:
+    - intent: inquire_battery_imbalance
+    - action: action_battery_imbalance
+    - action: utter_battery_imbalance
+
+- story: inquire_safety_systems_status
+  steps:
+    - intent: inquire_safety_systems_status
+    - action: action_safety_systems_status
+    - action: utter_safety_systems_status
+
+- story: inquire_environmental_conditions
+  steps:
+    - intent: inquire_environmental_conditions
+    - action: action_environmental_conditions
+    - action: utter_environmental_conditions
+
+- story: inquire_auxiliary_power_usage
+  steps:
+    - intent: inquire_auxiliary_power_usage
+    - action: action_auxiliary_power_usage
+    - action: utter_auxiliary_power_usage
+
+- story: Plan a trip and get cost
+  steps:
+    - intent: plan_trip  # User expresses intent to plan a trip
+    - action: destination_form  # Form gets activated to collect 'destination'
+    - active_loop: destination_form  # Form collects slots (destination)
+    - active_loop: null  # Form is complete, deactivate form
+    - action: action_plan_trip  # Custom action to plan the trip
+    - action: utter_return_trip_cost  # Respond with trip cost
+
