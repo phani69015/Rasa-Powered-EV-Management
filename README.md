@@ -22,4 +22,4 @@ By integrating backend APIs, the chatbot delivers accurate and timely responses,
 - **Others**: Backend integration for seamless data flow
 
 ### Demonstration 
-[![Watch the video](https://www.loom.com/embed/00a4007fb93642528e3bdbe1ff7303f3?sid=70d87ee5-63b8-4715-9e0c-71d5c86aef61)](https://www.loom.com/embed/00a4007fb93642528e3bdbe1ff7303f3?sid=70d87ee5-63b8-4715-9e0c-71d5c86aef61)
+[![Watch the video](https://cdn.loom.com/sessions/thumbnails/00a4007fb93642528e3bdbe1ff7303f3-64bedee3aa50addf-full-play.gif)](https://www.loom.com/embed/00a4007fb93642528e3bdbe1ff7303f3?sid=70d87ee5-63b8-4715-9e0c-71d5c86aef61)
